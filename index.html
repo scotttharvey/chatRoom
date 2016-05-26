@@ -9,10 +9,14 @@
     <div class="main-container">
       <h1> DevMountain Chat Room </h1>
       <form ng-submit="postData()">
-        <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
+        <input class="form-control text-box" type="text" ng-model="message" placeholder="Message" >
+        <!-- <select>
+          <option value="option">Newest :)</option>
+          <option value="option">Oldest :(</option>
+        </select> -->
       </form>
       <div class="messages-container">
-        <p ng-repeat="message in messages"> {{message.text}} </p>
+        <p ng-repeat="message in messages  | filter: {text: message}" > {{message.text}} - {{message.createdAt | date: "h:mm a"}} </p>
       </div>
     </div>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
